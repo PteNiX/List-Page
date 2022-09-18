@@ -11,8 +11,8 @@
        
         
         .tab{
-            border-top-left-radius: 10%;
-            border-top-right-radius: 10%;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
             width: 25%;
             height: 2.5rem;
             text-align: center;
@@ -21,6 +21,9 @@
             border-left: 0.1rem solid;
             border-top:0.1rem solid;
             cursor: pointer;
+            &:hover{
+                background-color: rgb(241, 241, 241);
+            }
 
         }
     }
