@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { last } from 'rxjs';
+
 
 
 
@@ -12,13 +13,79 @@ import { last } from 'rxjs';
 
 export class AppComponent {
   title = 'list-page';
+  
   displayedColumns: string[] = ['name:first', 'acount'];
   dataSource = ELEMENT_DATA;
+  endDataSource = this.dataSource;
 
-}
+  
+ 
+  dataSourceOutcome:any[] = [];
+  dataSourceIncome:any[] = [];
+  dataSourceLoans:any[] = [];
+  dataSourceInvestments:any[]= [];
 
 
-export interface PeriodicElement {
+  ngOnInit() {
+  
+  for(let i=0; this.dataSource.length;i++){
+
+      
+    if(this.dataSource[i].type=="outcome"){
+ 
+    this.dataSourceOutcome.push(this.dataSource[i]);
+    
+    }
+    else if(this.dataSource[i].type=="income"){
+
+      this.dataSourceIncome.push(this.dataSource[i]);
+
+    }
+
+    else if(this.dataSource[i].type=="loan"){
+ 
+        this.dataSourceLoans.push(this.dataSource[i]);
+
+    }
+
+    else if(this.dataSource[i].type=="investment"){
+ 
+          this.dataSourceInvestments.push(this.dataSource[i]);
+
+    }
+
+  }
+
+    }
+
+  tabChangeInCome(){
+    
+    this.endDataSource=this.dataSourceIncome;
+
+        }
+
+  tabChangeOutCome(){
+    
+    this.endDataSource=this.dataSourceOutcome;
+      
+        }
+  tabChangeLoans(){
+    
+  this.endDataSource=this.dataSourceLoans;
+            
+        }
+  tabChangeInvestments(){
+    
+    this.endDataSource=this.dataSourceInvestments;
+                  
+        }
+  
+
+      }
+
+
+
+export interface usersAccount {
     
     name:{first:string, 
     last:string}
@@ -35,7 +102,7 @@ export interface PeriodicElement {
   
   }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: usersAccount[] = [
   {
     "id": "5d99beb677015a5c2c14542e",
     "amount": "floating(1, 4000, 2)",
@@ -293,9 +360,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 ];
 
-/**
- * @title Basic use of `<table mat-table>`
- */
 
 
 
