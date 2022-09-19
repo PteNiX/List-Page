@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { last } from 'rxjs';
-
-
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { formatNumber } from '@angular/common';
 
 
 
@@ -11,52 +11,88 @@ import { last } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 
+
+
 export class AppComponent {
   title = 'list-page';
   
   displayedColumns: string[] = ['name:first', 'acount'];
-  dataSource = ELEMENT_DATA;
+
+  //arrays of data
+  
+  dataSource = USERS_DATA;
   endDataSource = this.dataSource;
+ 
+
+
+constructor(private router:Router, private activateRouter:ActivatedRoute ){
 
   
+
+}
  
+//create arrays sort by types
   dataSourceOutcome:any[] = [];
   dataSourceIncome:any[] = [];
   dataSourceLoans:any[] = [];
   dataSourceInvestments:any[]= [];
+  listButtons=document.querySelectorAll(".tab");  
+  
+  
+   deleteButtonStyle() {
+             
+      document.querySelectorAll(".tab").forEach(element => element.classList.remove("tab-active"));
+                
+  }
 
+  addButtonStyle(event:any) {
+     
+    event.path[1].classList.add("tab-active");
+
+  }
 
   ngOnInit() {
-  
+
+    //default url
+    this.router.navigate(['/navigator'],{queryParams: { tab: 'main' }});
+
+ 
+    //create arrays sorted by types
   for(let i=0; this.dataSource.length;i++){
 
-      
-    if(this.dataSource[i].type=="outcome"){
+     
+    if(this.dataSource[i] && this.dataSource[i].type=="outcome"){
  
     this.dataSourceOutcome.push(this.dataSource[i]);
     
     }
-    else if(this.dataSource[i].type=="income"){
+    else if(this.dataSource[i] && this.dataSource[i].type=="income"){
 
       this.dataSourceIncome.push(this.dataSource[i]);
 
     }
 
-    else if(this.dataSource[i].type=="loan"){
+    else if(this.dataSource[i] && this.dataSource[i] && this.dataSource[i].type=="loan"){
  
         this.dataSourceLoans.push(this.dataSource[i]);
 
     }
 
-    else if(this.dataSource[i].type=="investment"){
+    else if(this.dataSource[i] && this.dataSource[i].type=="investment"){
  
           this.dataSourceInvestments.push(this.dataSource[i]);
-
-    }
-
+            }
+      //fix TypeError   
+else{
+  break;
+}
+  
+  
   }
-
+  
     }
+
+    
 
   tabChangeInCome(){
     
@@ -81,8 +117,13 @@ export class AppComponent {
         }
   
 
-      }
+        goToTab(num:number):void{
+            this.router.navigate(['/navigator'],{queryParams: { tab: `${num}` }});
+        }
 
+        
+        
+      }
 
 
 export interface usersAccount {
@@ -102,7 +143,7 @@ export interface usersAccount {
   
   }
 
-const ELEMENT_DATA: usersAccount[] = [
+const USERS_DATA: usersAccount[] = [
   {
     "id": "5d99beb677015a5c2c14542e",
     "amount": "floating(1, 4000, 2)",
