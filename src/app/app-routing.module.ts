@@ -4,10 +4,7 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {path: 'navigator', component: AppComponent},
-  {path: 'navigator?tab=0', component: AppComponent},
-  {path: "navigator?tab=1", component: AppComponent},
-  {path: "navigator?tab=2", component: AppComponent},
-  {path: "navigator?tab=3", component: AppComponent},
+
 ]
 
 @NgModule({
