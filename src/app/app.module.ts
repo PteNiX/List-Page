@@ -3,33 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatTableModule} from '@angular/material/table';
-import {MatTabsModule} from '@angular/material/tabs';
-
-
-
-
-
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatTableModule,
-    MatTabsModule,
-    
-   
- 
-    
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, MatTableModule, MatTabsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-
-export class AppModule { 
-
-}
+export class AppModule {}

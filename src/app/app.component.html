@@ -1,46 +1,60 @@
 <div class="container">
-
   <div class="tabs">
-
-    <div class="tab" (click)="tabChangeInCome()" (click)="goToTab(0)" (click)="deleteButtonStyle()"
-      (click)=" addButtonStyle($event)">
-      <div class="tab-income">Income
-      </div>
+    <div
+      class="tab"
+      (click)="tabChangeInCome()"
+      (click)="goToTab(0)"
+      (click)="deleteButtonStyle()"
+      (click)="addButtonStyle($event)"
+    >
+      <div class="tab-income">Income</div>
     </div>
 
-    <div class="tab" (click)="tabChangeOutCome()" (click)="goToTab(1)" (click)="deleteButtonStyle()"
-      (click)=" addButtonStyle($event)">
+    <div
+      class="tab"
+      (click)="tabChangeOutCome()"
+      (click)="goToTab(1)"
+      (click)="deleteButtonStyle()"
+      (click)="addButtonStyle($event)"
+    >
       <div class="tab-outcome">Outcome</div>
     </div>
 
-    <div class="tab" (click)="tabChangeLoans()" (click)="goToTab(2)" (click)="deleteButtonStyle()"
-      (click)=" addButtonStyle($event)">
+    <div
+      class="tab"
+      (click)="tabChangeLoans()"
+      (click)="goToTab(2)"
+      (click)="deleteButtonStyle()"
+      (click)="addButtonStyle($event)"
+    >
       <div class="tab-loans">Loans</div>
     </div>
 
-    <div class="tab" (click)="tabChangeInvestments()" (click)="goToTab(3)" (click)="deleteButtonStyle()"
-      (click)=" addButtonStyle($event)">
+    <div
+      class="tab"
+      (click)="tabChangeInvestments()"
+      (click)="goToTab(3)"
+      (click)="deleteButtonStyle()"
+      (click)="addButtonStyle($event)"
+    >
       <div class="tab-investments">Investmens</div>
     </div>
   </div>
 
-
   <table mat-table [dataSource]="endDataSource" class="mat-elevation-z8 table">
-
     <ng-container matColumnDef="name:first">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name.first}} {{element.name.last}} </td>
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.name.first }} {{ element.name.last }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="acount">
-      <th mat-header-cell *matHeaderCellDef> Acount </th>
-      <td mat-cell *matCellDef="let element"> {{element.acount}} </td>
-
+      <th mat-header-cell *matHeaderCellDef>Acount</th>
+      <td mat-cell *matCellDef="let element">{{ element.acount }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-
-
 </div>
